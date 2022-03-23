@@ -65,7 +65,7 @@ RCT_EXPORT_MODULE();
             @"avoidEmptySpaceAroundImage": @YES,
             @"compressImageQuality": @0.8,
             @"compressVideoPreset": @"MediumQuality",
-            @"loadingLabelText": @"Processing assets...",
+            @"loadingLabelText": @"Please wait...",
             @"mediaType": @"any",
             @"showsSelectedCount": @YES,
             @"forceJpg": @NO,
@@ -608,19 +608,19 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
                                     }
                                     
                                     NSString *filePath = @"";
-                                    if([[self.options objectForKey:@"writeTempFile"] boolValue]) {
-                                        
-                                        filePath = [self persistFile:imageResult.data];
-                                        
-                                        if (filePath == nil) {
-                                            [indicatorView stopAnimating];
-                                            [overlayView removeFromSuperview];
-                                            [imagePickerController dismissViewControllerAnimated:YES completion:[self waitAnimationEnd:^{
-                                                self.reject(ERROR_CANNOT_SAVE_IMAGE_KEY, ERROR_CANNOT_SAVE_IMAGE_MSG, nil);
-                                            }]];
-                                            return;
-                                        }
-                                    }
+//                                    if([[self.options objectForKey:@"writeTempFile"] boolValue]) {
+//
+//                                        filePath = [self persistFile:imageResult.data];
+//
+//                                        if (filePath == nil) {
+//                                            [indicatorView stopAnimating];
+//                                            [overlayView removeFromSuperview];
+//                                            [imagePickerController dismissViewControllerAnimated:YES completion:[self waitAnimationEnd:^{
+//                                                self.reject(ERROR_CANNOT_SAVE_IMAGE_KEY, ERROR_CANNOT_SAVE_IMAGE_MSG, nil);
+//                                            }]];
+//                                            return;
+//                                        }
+//                                    }
                                     
                                     NSDictionary* exif = nil;
                                     if([[self.options objectForKey:@"includeExif"] boolValue]) {
