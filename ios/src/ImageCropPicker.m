@@ -423,7 +423,7 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
 //    CMTime time = [asset duration];
 //    int milliseconds = ceil(time.value/time.timescale) * 1000;
     
-    completion([self createAttachmentResponse:nil
+    completion([self createAttachmentResponse:@""
                                      withExif:nil
                                 withSourceURL:[sourceURL absoluteString]
                           withLocalIdentifier:localIdentifier
