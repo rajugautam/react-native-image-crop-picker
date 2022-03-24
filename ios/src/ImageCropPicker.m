@@ -423,7 +423,14 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
 //    CMTime time = [asset duration];
 //    int milliseconds = ceil(time.value/time.timescale) * 1000;
     
-    completion([self createAttachmentResponse:@""
+    // create temp file
+    NSString *tmpDirFullPath = [self getTmpDirectory];
+    NSString *filePath = [tmpDirFullPath stringByAppendingString:[[NSUUID UUID] UUIDString]];
+    filePath = [filePath stringByAppendingString:@".mp4"];
+    NSURL *outputURL = [NSURL fileURLWithPath:filePath];
+
+    
+    completion([self createAttachmentResponse:[outputURL absoluteString]
                                      withExif:nil
                                 withSourceURL:[sourceURL absoluteString]
                           withLocalIdentifier:localIdentifier
@@ -439,11 +446,6 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
                          withModificationDate:nil
                 ]);
     
-    // create temp file
-//    NSString *tmpDirFullPath = [self getTmpDirectory];
-//    NSString *filePath = [tmpDirFullPath stringByAppendingString:[[NSUUID UUID] UUIDString]];
-//    filePath = [filePath stringByAppendingString:@".mp4"];
-//    NSURL *outputURL = [NSURL fileURLWithPath:filePath];
     
 //    [self.compression compressVideo:sourceURL outputURL:outputURL withOptions:self.options handler:^(AVAssetExportSession *exportSession) {
 //        if (exportSession.status == AVAssetExportSessionStatusCompleted) {
