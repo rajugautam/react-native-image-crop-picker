@@ -438,8 +438,8 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
                                     withWidth:[NSNumber numberWithFloat:track.naturalSize.width]
                                    withHeight:[NSNumber numberWithFloat:track.naturalSize.height]
                                      withMime:@"video/mp4"
-                                     withSize:0
-                                 withDuration:0/*[NSNumber numberWithFloat:milliseconds]*/
+                                     withSize:[NSNumber numberWithInt:0]
+                                 withDuration:[NSNumber numberWithFloat:0.0]
                                      withData:nil
                                      withRect:CGRectNull
                              withCreationDate:nil
